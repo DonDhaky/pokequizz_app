@@ -1,10 +1,10 @@
 {
-  "name": "pokemon-guess-who",
+  "name": "pokequizz-app",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "EXPO_NO_TELEMETRY=1 expo start",
+    "dev": "expo start",
     "build:web": "expo export --platform web",
     "lint": "expo lint"
   },
@@ -13,9 +13,9 @@
     "@expo-google-fonts/poppins": "^0.3.1",
     "@expo/vector-icons": "^14.1.0",
     "@lucide/lab": "^0.1.2",
-    "@react-navigation/bottom-tabs": "^7.3.13",
-    "@react-navigation/native": "^7.1.9",
-    "expo": "^53.0.9",
+    "@react-navigation/bottom-tabs": "^7.3.10",
+    "@react-navigation/native": "^7.1.6",
+    "expo": "^53.0.0",
     "expo-blur": "~14.1.4",
     "expo-camera": "~16.1.6",
     "expo-constants": "~17.1.6",
@@ -49,6 +49,7 @@
   "devDependencies": {
     "@babel/core": "^7.27.1",
     "@types/react": "~19.0.10",
+    "cross-env": "^7.0.3",
     "typescript": "~5.8.3"
   }
 }
