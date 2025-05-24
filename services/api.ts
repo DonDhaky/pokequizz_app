@@ -29,10 +29,10 @@ export const fetchPokemon = async (id: number): Promise<Pokemon> => {
   return {
     id,
     name: 'Pikachu',
-    types: ['Electric'],
+    types: ['Électrik'],
     height: 0.4,
     weight: 6.0,
-    abilities: ['Static', 'Lightning Rod'],
+    abilities: ['Statik', 'Paratonnerre'],
     stats: {
       hp: 35,
       attack: 55,
@@ -57,11 +57,11 @@ export const fetchRandomPokemon = async (): Promise<Pokemon> => {
   // Return mock data
   return {
     id: randomId,
-    name: 'Charizard',
-    types: ['Fire', 'Flying'],
+    name: 'Dracaufeu',
+    types: ['Feu', 'Vol'],
     height: 1.7,
     weight: 90.5,
-    abilities: ['Blaze', 'Solar Power'],
+    abilities: ['Brasier', 'Force Soleil'],
     stats: {
       hp: 78,
       attack: 84,
@@ -86,7 +86,7 @@ export const fetchLeaderboard = async (
   const leaderboard: LeaderboardEntry[] = [
     {
       id: 1,
-      username: 'AshKetchum',
+      username: 'Sacha',
       score: 9500,
       rank: 1,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -95,7 +95,7 @@ export const fetchLeaderboard = async (
     },
     {
       id: 2,
-      username: 'MistyWater',
+      username: 'Ondine',
       score: 8750,
       rank: 2,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -104,7 +104,7 @@ export const fetchLeaderboard = async (
     },
     {
       id: 3,
-      username: 'BrockRock',
+      username: 'Pierre',
       score: 8200,
       rank: 3,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -113,7 +113,7 @@ export const fetchLeaderboard = async (
     },
     {
       id: 4,
-      username: 'GaryOak',
+      username: 'Régis',
       score: 7800,
       rank: 4,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -122,7 +122,7 @@ export const fetchLeaderboard = async (
     },
     {
       id: 5,
-      username: 'ProfOak',
+      username: 'Professeur Chen',
       score: 7500,
       rank: 5,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -131,7 +131,7 @@ export const fetchLeaderboard = async (
     },
     {
       id: 6,
-      username: 'TeamRocket',
+      username: 'Team Rocket',
       score: 7200,
       rank: 6,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -140,7 +140,7 @@ export const fetchLeaderboard = async (
     },
     {
       id: 7,
-      username: 'NursJoy',
+      username: 'Infirmière Joëlle',
       score: 6800,
       rank: 7,
       avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -152,7 +152,7 @@ export const fetchLeaderboard = async (
   // Mock user rank
   const userRank: LeaderboardEntry = {
     id: 999,
-    username: 'Player',
+    username: 'Joueur',
     score: 5200,
     rank: 42,
     avatar: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg',
@@ -190,8 +190,8 @@ export const fetchUserProfile = async (): Promise<UserProfile> => {
     achievements: [
       {
         id: 1,
-        title: 'First Blood',
-        description: 'Guess your first Pokémon',
+        title: 'Premier essai',
+        description: 'Trouve ton premier Pokémon',
         progress: 1,
         total: 1,
         unlocked: true,
@@ -199,8 +199,8 @@ export const fetchUserProfile = async (): Promise<UserProfile> => {
       },
       {
         id: 2,
-        title: 'Poké Master',
-        description: 'Guess 100 Pokémon correctly',
+        title: 'Maître Poké',
+        description: 'Trouve 100 Pokémon correctement',
         progress: 124,
         total: 100,
         unlocked: true,
@@ -208,17 +208,17 @@ export const fetchUserProfile = async (): Promise<UserProfile> => {
       },
       {
         id: 3,
-        title: 'Perfect Streak',
-        description: 'Maintain a 7-day streak',
+        title: 'Série parfaite',
+        description: 'Maintiens une série de 7 jours',
         progress: 5,
         total: 7,
         unlocked: false,
-        icon: 'flame'
+        icon: 'star'
       },
       {
         id: 4,
-        title: 'Speedster',
-        description: 'Guess 10 Pokémon in under 10 seconds each',
+        title: 'Rapide comme l\'éclair',
+        description: 'Trouve 10 Pokémon en moins de 10 secondes chacun',
         progress: 7,
         total: 10,
         unlocked: false,
@@ -226,8 +226,8 @@ export const fetchUserProfile = async (): Promise<UserProfile> => {
       },
       {
         id: 5,
-        title: 'Type Master',
-        description: 'Guess Pokémon of all 18 types',
+        title: 'Maître des types',
+        description: 'Trouve des Pokémon de tous les 18 types',
         progress: 12,
         total: 18,
         unlocked: false,

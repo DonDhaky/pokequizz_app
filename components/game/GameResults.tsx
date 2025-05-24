@@ -50,8 +50,8 @@ export default function GameResults({
   const handleShare = async () => {
     try {
       const message = isSuccess
-        ? `I just guessed ${pokemon?.name} in Pokémon Guess Who and scored ${score} points! Can you beat my score?`
-        : `I just played Pokémon Guess Who but couldn't guess ${pokemon?.name}. My score was ${score} points. Think you can do better?`;
+        ? `Je viens de trouver ${pokemon?.name} dans PokéGuessWho en marquant ${score} points ! Tu peux battre mon score ?`
+        : `Je viens de jouer à PokéGuessWho mais je n'ai pas trouvé ${pokemon?.name}. J'ai marqué ${score} points... Tu peux faire mieux ?`;
         
       if (Platform.OS === 'web') {
         // Web sharing
@@ -99,18 +99,18 @@ export default function GameResults({
             )}
           </View>
           <Text style={styles.resultTitle}>
-            {isSuccess ? 'Great Job!' : 'Better Luck Next Time!'}
+            {isSuccess ? 'Bravo !' : 'Dommage !'}
           </Text>
           <Text style={styles.resultSubtitle}>
             {isSuccess 
-              ? 'You correctly guessed the Pokémon!'
-              : 'You ran out of guesses or time.'
+              ? 'Tu as trouvé le bon Pokémon !'
+              : 'Tu n\'as plus de tentatives ou de temps.'
             }
           </Text>
         </View>
         
         <View style={styles.scoreContainer}>
-          <Text style={styles.scoreLabel}>Your Score</Text>
+          <Text style={styles.scoreLabel}>Ton score</Text>
           <Text style={styles.scoreValue}>{score}</Text>
           <Text style={styles.scorePoints}>points</Text>
         </View>
@@ -125,13 +125,13 @@ export default function GameResults({
             <Text style={styles.pokemonName}>{pokemon.name}</Text>
             <View style={styles.pokemonDetails}>
               <Text style={styles.pokemonType}>
-                Type: {pokemon.types.join(', ')}
+                Type : {pokemon.types.join(', ')}
               </Text>
               <Text style={styles.pokemonHeight}>
-                Height: {pokemon.height}m
+                Taille : {pokemon.height}m
               </Text>
               <Text style={styles.pokemonWeight}>
-                Weight: {pokemon.weight}kg
+                Poids : {pokemon.weight}kg
               </Text>
             </View>
           </View>
@@ -143,7 +143,7 @@ export default function GameResults({
             onPress={handleShare}
           >
             <Share2 size={20} color={COLORS.white} />
-            <Text style={styles.buttonText}>Share</Text>
+            <Text style={styles.buttonText}>Partager</Text>
           </TouchableOpacity>
           
           <TouchableOpacity 
@@ -151,7 +151,7 @@ export default function GameResults({
             onPress={onPlayAgain}
           >
             <Play size={20} color={COLORS.white} />
-            <Text style={styles.buttonText}>Play Again</Text>
+            <Text style={styles.buttonText}>Rejouer</Text>
           </TouchableOpacity>
           
           <TouchableOpacity 
@@ -160,7 +160,7 @@ export default function GameResults({
           >
             <Home size={20} color={isSuccess ? COLORS.primary : COLORS.secondary} />
             <Text style={[styles.buttonText, styles.homeButtonText]}>
-              Home
+              Accueil
             </Text>
           </TouchableOpacity>
         </View>

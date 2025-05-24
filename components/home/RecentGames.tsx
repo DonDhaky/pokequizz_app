@@ -41,9 +41,9 @@ export default function RecentGames() {
   return (
     <View style={styles.section}>
       <View style={styles.sectionHeader}>
-        <Text style={styles.sectionTitle}>Recent Games</Text>
+        <Text style={styles.sectionTitle}>Parties récentes</Text>
         <TouchableOpacity style={styles.seeAllButton}>
-          <Text style={styles.seeAllText}>See All</Text>
+          <Text style={styles.seeAllText}>Tout voir</Text>
           <ChevronRight size={16} color={COLORS.primary} />
         </TouchableOpacity>
       </View>
@@ -57,7 +57,7 @@ export default function RecentGames() {
           <TouchableOpacity 
             key={game.id} 
             style={styles.gameCard}
-            onPress={() => router.push(`/game-history/${game.id}`)}
+            onPress={() => router.push('/(tabs)/game-history')}
           >
             <Image 
               source={{ uri: game.imageUrl }} 
@@ -78,7 +78,7 @@ export default function RecentGames() {
                 <Text style={styles.gameScore}>{game.score} pts</Text>
                 <Text style={styles.gameDate}>{game.date}</Text>
               </View>
-              <Text style={styles.guessTime}>Guessed in {game.guessTime}</Text>
+              <Text style={styles.guessTime}>Trouvé en {game.guessTime}</Text>
             </View>
           </TouchableOpacity>
         ))}

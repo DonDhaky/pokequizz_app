@@ -13,7 +13,7 @@ import {
 } from '@expo-google-fonts/poppins';
 import { Platform } from 'react-native';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-import { Chrome as Home, Play, User, Trophy } from 'lucide-react-native';
+import { Home, Play, User, Trophy } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
 
 // Prevent splash screen from auto-hiding
@@ -63,7 +63,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Accueil',
           tabBarIcon: ({ color, size }) => (
             <Home size={size} color={color} />
           ),
@@ -72,7 +72,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="play"
         options={{
-          title: 'Play',
+          title: 'Jouer',
           tabBarIcon: ({ color, size }) => (
             <Play size={size} color={color} />
           ),
@@ -81,7 +81,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: 'Profil',
           tabBarIcon: ({ color, size }) => (
             <User size={size} color={color} />
           ),
@@ -90,7 +90,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="leaderboard"
         options={{
-          title: 'Leaderboard',
+          title: 'Classement',
           tabBarIcon: ({ color, size }) => (
             <Trophy size={size} color={color} />
           ),

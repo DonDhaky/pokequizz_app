@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import {
   View,
@@ -12,7 +13,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { useSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowLeft, CircleHelp as HelpCircle, Lightbulb, Clock, Heart, Search } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
@@ -25,7 +26,7 @@ import { startGame, checkGuess } from '@/services/gameLogic';
 import { getDifficultySettings } from '@/utils/helpers';
 
 export default function PlayScreen() {
-  const { mode } = useSearchParams();
+  const { mode } = useLocalSearchParams();
   const {
     currentPokemon,
     hints,
@@ -172,7 +173,7 @@ export default function PlayScreen() {
             <ArrowLeft size={24} color={COLORS.textPrimary} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>
-            {mode === 'daily' ? 'Daily Challenge' : 'Guess the Pokémon'}
+            {mode === 'daily' ? 'Défi du jour' : 'Devine le Pokémon'}
           </Text>
           <TouchableOpacity style={styles.helpButton}>
             <HelpCircle size={24} color={COLORS.textPrimary} />
@@ -192,7 +193,7 @@ export default function PlayScreen() {
             
             <View style={styles.statItem}>
               <Heart size={16} color={COLORS.error} />
-              <Text style={styles.statText}>{lives} lives</Text>
+              <Text style={styles.statText}>{lives} vies</Text>
             </View>
             
             <View style={styles.statItem}>

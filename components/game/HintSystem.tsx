@@ -19,7 +19,7 @@ export default function HintSystem({
 }: HintSystemProps) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Available Hints</Text>
+      <Text style={styles.title}>Indices disponibles</Text>
       
       <ScrollView 
         horizontal 
@@ -51,7 +51,7 @@ export default function HintSystem({
                   isRevealed && styles.revealedText,
                   !canAfford && !isRevealed && styles.unaffordableText
                 ]}>
-                  {isRevealed ? 'Revealed' : `${hint.cost} pts`}
+                  {isRevealed ? 'Révélé' : `${hint.cost} pts`}
                 </Text>
               </View>
               
@@ -67,7 +67,7 @@ export default function HintSystem({
                 <Text style={styles.hintContent}>{hint.content}</Text>
               ) : (
                 <Text style={styles.lockedText}>
-                  {canAfford ? 'Tap to reveal' : 'Not enough points'}
+                  {canAfford ? 'Appuie pour révéler' : 'Pas assez de points'}
                 </Text>
               )}
             </TouchableOpacity>

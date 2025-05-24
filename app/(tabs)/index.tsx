@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { 
   View, 
@@ -53,7 +54,7 @@ export default function HomeScreen() {
       <StatusBar style="auto" />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>Pokémon Guess Who</Text>
+          <Text style={styles.title}>PokéGuessWho</Text>
           <TouchableOpacity style={styles.settingsButton}>
             <Settings size={24} color={COLORS.textPrimary} />
           </TouchableOpacity>
@@ -66,16 +67,16 @@ export default function HomeScreen() {
           style={styles.heroCard}
         >
           <View style={styles.heroContent}>
-            <Text style={styles.heroTitle}>Ready to play?</Text>
+            <Text style={styles.heroTitle}>Prêt à jouer ?</Text>
             <Text style={styles.heroSubtitle}>
-              Test your Pokémon knowledge!
+              Teste tes connaissances sur les Pokémon !
             </Text>
             <TouchableOpacity 
               style={styles.playButton}
               onPress={() => router.push('/(tabs)/play')}
             >
               <Play size={20} color={COLORS.primary} />
-              <Text style={styles.playButtonText}>Play Now</Text>
+              <Text style={styles.playButtonText}>Jouer</Text>
             </TouchableOpacity>
           </View>
           <Image 
@@ -87,10 +88,10 @@ export default function HomeScreen() {
 
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Daily Challenge</Text>
+            <Text style={styles.sectionTitle}>Défi du jour</Text>
             <TouchableOpacity style={styles.seeAllButton}>
               <Info size={16} color={COLORS.primary} />
-              <Text style={styles.seeAllText}>How to Play</Text>
+              <Text style={styles.seeAllText}>Comment jouer</Text>
             </TouchableOpacity>
           </View>
           
@@ -100,25 +101,25 @@ export default function HomeScreen() {
           >
             {isLoading ? (
               <View style={styles.loadingContainer}>
-                <Text style={styles.loadingText}>Loading daily challenge...</Text>
+                <Text style={styles.loadingText}>Chargement du défi du jour...</Text>
               </View>
             ) : (
               <>
                 <View style={styles.dailyContent}>
-                  <Text style={styles.dailyTitle}>Pokémon of the Day</Text>
+                  <Text style={styles.dailyTitle}>Pokémon du jour</Text>
                   <Text style={styles.dailySubtitle}>
-                    New challenge every 24 hours
+                    Nouveau défi toutes les 24 heures
                   </Text>
                   <View style={styles.dailyStats}>
                     <Text style={styles.dailyStatsText}>
-                      Difficulty: <Text style={styles.dailyHighlight}>Medium</Text>
+                      Difficulté : <Text style={styles.dailyHighlight}>Moyenne</Text>
                     </Text>
                     <Text style={styles.dailyStatsText}>
-                      Bonus Points: <Text style={styles.dailyHighlight}>2x</Text>
+                      Points bonus : <Text style={styles.dailyHighlight}>2x</Text>
                     </Text>
                   </View>
                   <TouchableOpacity style={styles.dailyButton}>
-                    <Text style={styles.dailyButtonText}>Play Challenge</Text>
+                    <Text style={styles.dailyButtonText}>Tenter le défi</Text>
                     <ChevronRight size={16} color={COLORS.white} />
                   </TouchableOpacity>
                 </View>
@@ -137,8 +138,8 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.statsContainer}>
-          <StatsCard title="Pokémon Guessed" value="124" icon="zap" />
-          <StatsCard title="Accuracy" value="68%" icon="percent" />
+          <StatsCard title="Pokémon trouvés" value="124" icon="zap" />
+          <StatsCard title="Précision" value="68%" icon="percent" />
         </View>
 
         <RecentGames />
@@ -148,12 +149,12 @@ export default function HomeScreen() {
           onPress={() => router.push('/(tabs)/leaderboard')}
         >
           <Trophy size={20} color={COLORS.white} />
-          <Text style={styles.leaderboardButtonText}>View Leaderboard</Text>
+          <Text style={styles.leaderboardButtonText}>Voir le classement</Text>
         </TouchableOpacity>
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            Powered by PokéAPI • v1.0.0
+            Build par Dhaky with PokéAPI • v1.0.0
           </Text>
         </View>
       </ScrollView>

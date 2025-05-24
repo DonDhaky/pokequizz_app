@@ -1,0 +1,59 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+You have to be always considering the [package.json](mdc:pokequizz_app/package.json) file to know the current dependencies in the project.
+Always provide clean code and beautiful interfaces for the app when building.
+
+Got it. This package.json gives us the definitive list of currently installed dependencies, which is super important.
+
+Based on your package.json:
+
+You're indeed using lucide-react-native for icons, which confirms my earlier adjustment.
+You don't have react-native-paper listed. This means we shouldn't recommend it in the Cursor rule, as it would introduce a new dependency. We'll rely more on your existing StyleSheet.create pattern, styled-components, and perhaps suggest using basic React Native components or creating custom ones.
+You don't have lottie-react-native either. So, we'll remove this from the animations section in the rule. react-native-reanimated will be the primary animation tool.
+The Google Fonts packages (@expo-google-fonts/inter, @expo-google-fonts/poppins) confirm your custom font usage, which is great.
+Here's the revised Cursor rule, perfectly tailored to your current package.json and project setup.
+
+Cursor Rule for the Pokémon Guessing Game Project
+You have to be always considering the @package.json file to know the current dependencies in the project.
+Always provide clean code and beautiful interfaces for the app when building.
+
+General Priorities
+Performance and Fluidity: Ensure the app feels smooth and responsive. Optimize for animations, data fetching, and rendering performance on mobile devices.
+Security & Best Practices: Always adhere to React Native, Expo, and Supabase security best practices, especially concerning API keys, authentication, and data handling.
+Maintainability: Write code that's easy to understand, test, and extend in the future. Follow standard coding conventions consistent with the existing codebase.
+Technical Specifics & Code Quality
+React Native & Expo:
+Utilize functional components and React Hooks.
+Leverage TypeScript for type safety in all new and modified code.
+Prioritize Expo SDK functionalities. Avoid ejecting from Expo.
+Use expo-router for navigation management.
+State Management (Zustand):
+Manage global application state efficiently using Zustand stores. Keep stores concise and focused on specific data domains.
+Ensure proper state updates and avoid unnecessary re-renders.
+Backend (Supabase):
+Interact with Supabase using its official JavaScript client library.
+Handle data fetching, mutations, and real-time subscriptions (if any) efficiently. Protect sensitive data and user information.
+Styling & Theming:
+Use StyleSheet.create for static, component-scoped styles, consistent with the RecentGames component.
+Implement styled-components for dynamic styles, theming capabilities, and creating reusable styled components where more flexibility than StyleSheet is needed.
+Refer to the @/utils/theme file for color definitions and maintain consistency with the existing theme.
+UI Components:
+Build UI using standard React Native components combined with custom components.
+Focus on creating a visually appealing and consistent look based on the provided design context and existing code patterns.
+Animations (react-native-reanimated):
+Implement fluid and performant animations using react-native-reanimated for interactive elements and gestures.
+API Integration (PokéAPI):
+Handle asynchronous data fetching from PokéAPI gracefully, including loading states and error handling.
+Implement client-side caching strategies if large amounts of static data are frequently requested.
+Icons (lucide-react-native):
+Utilize lucide-react-native for all icon needs, as demonstrated in the RecentGames component. Ensure consistency in icon usage.
+Typography:
+Use custom fonts from @expo-google-fonts/inter and @expo-google-fonts/poppins defined in your project. Ensure font weights and styles are consistent with the existing UI.
+Interaction & Output Guidelines
+Clarity and Conciseness: Provide solutions and explanations that are direct and easy to understand.
+Code Snippets: When providing code, ensure it's ready to be directly integrated, well-formatted, and includes necessary imports.
+Problem Solving: If encountering ambiguity or multiple valid approaches, state assumptions or propose options with justifications.
+Design & UX Focus: Always consider the "Desired User Experience" section of the project prompt. Suggest UI/UX improvements or alternatives if they significantly enhance the user experience while staying within the technical constraints and current design patterns.ent design patterns.

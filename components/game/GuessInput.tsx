@@ -94,7 +94,7 @@ export default function GuessInput({
         style={styles.input}
         value={value}
         onChangeText={onChangeText}
-        placeholder="Type your guess..."
+        placeholder="Entre ta réponse..."
         placeholderTextColor={COLORS.textTertiary}
         onSubmitEditing={handleSubmitEditing}
         autoCapitalize="none"
@@ -111,7 +111,7 @@ export default function GuessInput({
         disabled={isCorrect}
       >
         <Text style={styles.submitText}>
-          {isCorrect ? 'Correct!' : 'Guess'}
+          {isCorrect ? 'Bien joué !' : 'Valider'}
         </Text>
       </TouchableOpacity>
     </Animated.View>

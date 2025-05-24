@@ -43,7 +43,7 @@ export default function ProfileScreen() {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.loadingContainer}>
-          <Text style={styles.loadingText}>Loading profile...</Text>
+          <Text style={styles.loadingText}>Chargement du profil...</Text>
         </View>
       </SafeAreaView>
     );
@@ -54,7 +54,7 @@ export default function ProfileScreen() {
       <StatusBar style="auto" />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>Profile</Text>
+          <Text style={styles.title}>Profil</Text>
           <TouchableOpacity style={styles.settingsButton}>
             <Settings size={24} color={COLORS.textPrimary} />
           </TouchableOpacity>
@@ -66,22 +66,22 @@ export default function ProfileScreen() {
             style={styles.profileImage}
           />
           <View style={styles.profileInfo}>
-            <Text style={styles.profileName}>{user?.username || 'Trainer'}</Text>
-            <Text style={styles.profileRank}>Rank: Pokémon Master</Text>
+            <Text style={styles.profileName}>{user?.username || 'Dresseur'}</Text>
+            <Text style={styles.profileRank}>Rang : Maître Pokémon</Text>
             <View style={styles.profileStats}>
               <View style={styles.statItem}>
                 <Text style={styles.statValue}>{user?.totalGuessed || 0}</Text>
-                <Text style={styles.statLabel}>Guessed</Text>
+                <Text style={styles.statLabel}>Trouvés</Text>
               </View>
               <View style={styles.divider} />
               <View style={styles.statItem}>
                 <Text style={styles.statValue}>{user?.highScore || 0}</Text>
-                <Text style={styles.statLabel}>High Score</Text>
+                <Text style={styles.statLabel}>Meilleur score</Text>
               </View>
               <View style={styles.divider} />
               <View style={styles.statItem}>
                 <Text style={styles.statValue}>{user?.accuracy || 0}%</Text>
-                <Text style={styles.statLabel}>Accuracy</Text>
+                <Text style={styles.statLabel}>Précision</Text>
               </View>
             </View>
           </View>
@@ -125,7 +125,7 @@ export default function ProfileScreen() {
                 activeTab === 'achievements' && styles.activeTabText
               ]}
             >
-              Achievements
+              Succès
             </Text>
           </TouchableOpacity>
         </View>
@@ -133,31 +133,31 @@ export default function ProfileScreen() {
         {activeTab === 'stats' ? (
           <View style={styles.statisticsContainer}>
             <StatisticsCard
-              title="Daily Streak"
+              title="Série"
               value={user?.streak || 0}
               icon="flame"
               change={+2}
             />
             <StatisticsCard
-              title="Pokémon Guessed"
+              title="Pokémon trouvés"
               value={user?.totalGuessed || 0}
               icon="zap"
               change={+12}
             />
             <StatisticsCard
-              title="Accuracy Rate"
+              title="Taux de précision"
               value={`${user?.accuracy || 0}%`}
               icon="percent"
               change={-3}
             />
             <StatisticsCard
-              title="Avg. Time"
+              title="Temps moyen"
               value={`${user?.avgTime || 0}s`}
               icon="clock"
               change={-1.5}
             />
             
-            <Text style={styles.sectionTitle}>Performance by Type</Text>
+            <Text style={styles.sectionTitle}>Performance par type</Text>
             <View style={styles.typePerformance}>
               {user?.typePerformance?.map((type, index) => (
                 <View key={index} style={styles.typeItem}>
@@ -171,7 +171,7 @@ export default function ProfileScreen() {
                   </LinearGradient>
                   <View style={styles.typeInfo}>
                     <Text style={styles.typeName}>{type.type}</Text>
-                    <Text style={styles.typeAccuracy}>{type.accuracy}% accuracy</Text>
+                    <Text style={styles.typeAccuracy}>{type.accuracy}% de précision</Text>
                   </View>
                 </View>
               ))}
@@ -196,7 +196,7 @@ export default function ProfileScreen() {
         <View style={styles.actionButtons}>
           <TouchableOpacity style={styles.actionButton}>
             <Share2 size={20} color={COLORS.primary} />
-            <Text style={styles.actionButtonText}>Share Profile</Text>
+            <Text style={styles.actionButtonText}>Partager le profil</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionButton, styles.logoutButton]}
@@ -204,14 +204,14 @@ export default function ProfileScreen() {
           >
             <LogOut size={20} color={COLORS.error} />
             <Text style={[styles.actionButtonText, styles.logoutText]}>
-              Logout
+              Déconnexion
             </Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            Pokémon Guess Who • v1.0.0
+            PokéGuessWho • v1.0.0
           </Text>
         </View>
       </ScrollView>

@@ -92,7 +92,7 @@ export default function AchievementCard({
       
       {unlocked && (
         <View style={styles.unlockedBadge}>
-          <Text style={styles.unlockedText}>Unlocked</Text>
+          <Text style={styles.unlockedText}>Débloqué</Text>
         </View>
       )}
     </View>

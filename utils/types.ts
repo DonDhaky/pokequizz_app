@@ -69,7 +69,7 @@ export interface Achievement {
   progress: number;
   total: number;
   unlocked: boolean;
-  icon: string;
+  icon: 'award' | 'zap' | 'target' | 'star' | 'medal' | 'trophy';
 }
 
 // Leaderboard types

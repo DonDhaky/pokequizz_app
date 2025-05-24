@@ -79,7 +79,7 @@ export default function LeaderboardScreen() {
         <View style={styles.userInfo}>
           <Text style={styles.username}>{item.username}</Text>
           <Text style={styles.userStats}>
-            {item.totalGuessed} guessed • {item.accuracy}% accuracy
+            {item.totalGuessed} trouvés • {item.accuracy}% précision
           </Text>
         </View>
         
@@ -96,7 +96,7 @@ export default function LeaderboardScreen() {
       <StatusBar style="auto" />
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title}>Leaderboard</Text>
+          <Text style={styles.title}>Classement</Text>
           <TouchableOpacity style={styles.filterButton}>
             <Filter size={24} color={COLORS.textPrimary} />
           </TouchableOpacity>
@@ -114,7 +114,7 @@ export default function LeaderboardScreen() {
               styles.tabText,
               timeframe === 'daily' && styles.activeTabText
             ]}>
-              Daily
+              Quotidien
             </Text>
           </TouchableOpacity>
           
@@ -129,7 +129,7 @@ export default function LeaderboardScreen() {
               styles.tabText,
               timeframe === 'weekly' && styles.activeTabText
             ]}>
-              Weekly
+              Hebdomadaire
             </Text>
           </TouchableOpacity>
           
@@ -144,7 +144,7 @@ export default function LeaderboardScreen() {
               styles.tabText,
               timeframe === 'all-time' && styles.activeTabText
             ]}>
-              All Time
+              All-time
             </Text>
           </TouchableOpacity>
         </View>
@@ -158,31 +158,31 @@ export default function LeaderboardScreen() {
           <View style={styles.summaryContent}>
             <Trophy size={32} color={COLORS.white} style={styles.summaryIcon} />
             <View>
-              <Text style={styles.summaryTitle}>Your Ranking</Text>
+              <Text style={styles.summaryTitle}>Votre classement</Text>
               <Text style={styles.summaryRank}>
-                {userRank ? `#${userRank.rank}` : 'Not Ranked'}
+                {userRank ? `#${userRank.rank}` : 'Non classé'}
               </Text>
               <Text style={styles.summaryScore}>
-                {userRank ? `${userRank.score} points` : 'Play more to rank up!'}
+                {userRank ? `${userRank.score} points` : 'Jouez plus pour grimper !'}
               </Text>
             </View>
           </View>
         </LinearGradient>
 
         <View style={styles.leaderboardHeader}>
-          <Text style={styles.leaderboardTitle}>Top Players</Text>
+          <Text style={styles.leaderboardTitle}>Meilleurs joueurs</Text>
           <TouchableOpacity 
             style={styles.refreshButton}
             onPress={loadLeaderboard}
           >
             <RefreshCcw size={16} color={COLORS.primary} />
-            <Text style={styles.refreshText}>Refresh</Text>
+            <Text style={styles.refreshText}>Rafraîchir</Text>
           </TouchableOpacity>
         </View>
 
         {isLoading ? (
           <View style={styles.loadingContainer}>
-            <Text style={styles.loadingText}>Loading leaderboard...</Text>
+            <Text style={styles.loadingText}>Chargement du classement...</Text>
           </View>
         ) : (
           <FlatList
@@ -193,7 +193,7 @@ export default function LeaderboardScreen() {
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
-                <Text style={styles.emptyText}>No leaderboard data available</Text>
+                <Text style={styles.emptyText}>Aucune donnée de classement disponible</Text>
               </View>
             }
           />

@@ -6,32 +6,32 @@ const generateHints = (pokemon: Pokemon): Hint[] => {
   return [
     {
       type: 'Silhouette',
-      content: 'Reveal the Pokémon silhouette',
+      content: 'Révèle la silhouette du Pokémon',
       cost: 0
     },
     {
       type: 'Type',
-      content: `This Pokémon is ${pokemon.types.length > 1 ? 'dual-type' : 'single-type'}: ${pokemon.types.join('/')}`,
+      content: `Ce Pokémon est ${pokemon.types.length > 1 ? 'double-type' : 'monotype'} : ${pokemon.types.join('/')}`,
       cost: 50
     },
     {
       type: 'Category',
-      content: `This Pokémon weighs ${pokemon.weight}kg and is ${pokemon.height}m tall`,
+      content: `Ce Pokémon pèse ${pokemon.weight}kg et mesure ${pokemon.height}m`,
       cost: 100
     },
     {
       type: 'Ability',
-      content: `This Pokémon's abilities include: ${pokemon.abilities.join(', ')}`,
+      content: `Les talents de ce Pokémon incluent : ${pokemon.abilities.join(', ')}`,
       cost: 150
     },
     {
       type: 'Stats',
-      content: `This Pokémon has high ${getHighestStat(pokemon.stats)} and low ${getLowestStat(pokemon.stats)}`,
+      content: `Ce Pokémon a une statistique élevée en ${getHighestStat(pokemon.stats)} et plus faible en ${getLowestStat(pokemon.stats)}`,
       cost: 200
     },
     {
       type: 'First Letter',
-      content: `This Pokémon's name starts with "${pokemon.name.charAt(0).toUpperCase()}"`,
+      content: `Le nom de ce Pokémon commence par "${pokemon.name.charAt(0).toUpperCase()}"`,
       cost: 250
     }
   ];
@@ -94,8 +94,11 @@ export const startGame = async (
 ): Promise<GameState> => {
   try {
     // Fetch Pokémon based on game mode
-    const pokemon = mode === 'daily' 
+    const pokemonOfTheDay = mode === 'daily' 
       ? await fetchDailyPokemon()
+      : null;
+    const pokemon: Pokemon = pokemonOfTheDay
+      ? await fetchPokemon(pokemonOfTheDay.id)
       : await fetchRandomPokemon();
     
     // Generate hints for the Pokémon
@@ -125,7 +128,7 @@ export const checkGuess = (
   guess: string,
   pokemon: Pokemon | null
 ): { isCorrect: boolean; feedback?: string } => {
-  if (!pokemon) return { isCorrect: false, feedback: 'No Pokémon loaded' };
+  if (!pokemon) return { isCorrect: false, feedback: 'Aucun Pokémon chargé' };
   
   const normalizedGuess = guess.trim().toLowerCase();
   const normalizedName = pokemon.name.toLowerCase();
@@ -140,17 +143,17 @@ export const checkGuess = (
   if (similarity > 0.8) {
     return { 
       isCorrect: false, 
-      feedback: 'Very close! Try again.' 
+      feedback: 'Très proche ! Essaie encore.' 
     };
   } else if (similarity > 0.5) {
     return { 
       isCorrect: false, 
-      feedback: 'Not quite right. Keep trying!' 
+      feedback: 'Pas tout à fait. Continue !' 
     };
   } else {
     return { 
       isCorrect: false, 
-      feedback: 'Not even close. Try another Pokémon.' 
+      feedback: 'Pas du tout. Tente un autre Pokémon.' 
     };
   }
 };

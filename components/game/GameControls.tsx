@@ -38,7 +38,7 @@ export default function GameControls({ onSkip, remainingTime }: GameControlsProp
         onPress={onSkip}
       >
         <SkipForward size={16} color={COLORS.white} />
-        <Text style={styles.skipText}>Skip (-1 life)</Text>
+        <Text style={styles.skipText}>Passer (-1 vie)</Text>
       </TouchableOpacity>
     </View>
   );
