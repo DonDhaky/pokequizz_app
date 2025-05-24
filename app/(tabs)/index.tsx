@@ -154,7 +154,7 @@ export default function HomeScreen() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            Build par Dhaky with PokéAPI • v1.0.0
+            PokéGuessWho par Dhaky • v1.0.0
           </Text>
         </View>
       </ScrollView>
@@ -320,7 +320,8 @@ const styles = StyleSheet.create({
   },
   silhouetteImage: {
     width: '100%',
-    height: '100%',
+    maxHeight: 80,
+    alignSelf: 'center',
   },
   loadingContainer: {
     flex: 1,

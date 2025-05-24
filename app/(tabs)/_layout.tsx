@@ -13,7 +13,7 @@ import {
 } from '@expo-google-fonts/poppins';
 import { Platform } from 'react-native';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-import { Home, Play, User, Trophy } from 'lucide-react-native';
+import { Home, Play, User, Trophy, History } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
 
 // Prevent splash screen from auto-hiding
@@ -93,6 +93,15 @@ export default function TabLayout() {
           title: 'Classement',
           tabBarIcon: ({ color, size }) => (
             <Trophy size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="game-history"
+        options={{
+          title: 'Historique',
+          tabBarIcon: ({ color, size }) => (
+            <History size={size} color={color} />
           ),
         }}
       />

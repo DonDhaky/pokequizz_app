@@ -53,7 +53,12 @@ export default function StatisticsCard({
           styles.changeBadge,
           change > 0 ? styles.increaseBadge : styles.decreaseBadge
         ]}>
-          <Text style={styles.changeText}>
+          <Text
+            style={[
+              styles.changeText,
+              { color: change > 0 ? COLORS.success : COLORS.error }
+            ]}
+          >
             {change > 0 ? '+' : ''}{change}
           </Text>
         </View>
@@ -117,6 +122,5 @@ const styles = StyleSheet.create({
   changeText: {
     fontFamily: 'Inter-Medium',
     fontSize: 12,
-    color: change => change > 0 ? COLORS.success : COLORS.error,
   },
 });

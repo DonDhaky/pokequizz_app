@@ -35,8 +35,53 @@ const recentGames = [
   }
 ];
 
-export default function RecentGames() {
+interface RecentGamesProps {
+  mode?: 'horizontal' | 'vertical';
+}
+
+export default function RecentGames({ mode = 'horizontal' }: RecentGamesProps) {
   const router = useRouter();
+
+  if (mode === 'vertical') {
+    return (
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Parties récentes</Text>
+        </View>
+        <View style={styles.verticalListContainer}>
+          {recentGames.map((game) => (
+            <TouchableOpacity
+              key={game.id}
+              style={styles.verticalGameCard}
+              onPress={() => router.push('/(tabs)/profile')}
+            >
+              <Image
+                source={{ uri: game.imageUrl }}
+                style={styles.verticalGameImage}
+              />
+              <View style={styles.gameInfo}>
+                <View style={styles.gameHeader}>
+                  <Text style={styles.gamePokemon}>{game.pokemonName}</Text>
+                  <View style={[
+                    styles.difficultyBadge,
+                    game.difficulty === 'Easy' ? styles.easyBadge :
+                    game.difficulty === 'Medium' ? styles.mediumBadge : styles.hardBadge
+                  ]}>
+                    <Text style={styles.difficultyText}>{game.difficulty}</Text>
+                  </View>
+                </View>
+                <View style={styles.gameStats}>
+                  <Text style={styles.gameScore}>{game.score} pts</Text>
+                  <Text style={styles.gameDate}>{game.date}</Text>
+                </View>
+                <Text style={styles.guessTime}>Trouvé en {game.guessTime}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.section}>
@@ -182,5 +227,28 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     fontSize: 12,
     color: COLORS.textSecondary,
+  },
+  verticalListContainer: {
+    gap: 16,
+  },
+  verticalGameCard: {
+    flexDirection: 'row',
+    backgroundColor: COLORS.cardBackground,
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginBottom: 16,
+    shadowColor: COLORS.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 2,
+    alignItems: 'center',
+    padding: 8,
+  },
+  verticalGameImage: {
+    width: 70,
+    height: 70,
+    borderRadius: 12,
+    marginRight: 12,
   },
 });

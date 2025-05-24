@@ -18,6 +18,7 @@ import AchievementCard from '@/components/profile/AchievementCard';
 import StatisticsCard from '@/components/profile/StatisticsCard';
 import { fetchUserProfile } from '@/services/api';
 import { UserProfile } from '@/utils/types';
+import RecentGames from '@/components/home/RecentGames';
 
 export default function ProfileScreen() {
   const { user, setUser, logout } = useUserStore();
@@ -105,7 +106,7 @@ export default function ProfileScreen() {
                 activeTab === 'stats' && styles.activeTabText
               ]}
             >
-              Statistics
+              Statistiques
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -126,6 +127,26 @@ export default function ProfileScreen() {
               ]}
             >
               Succès
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.tabButton,
+              activeTab === 'history' && styles.activeTabButton
+            ]}
+            onPress={() => setActiveTab('history')}
+          >
+            <BarChart3
+              size={18}
+              color={activeTab === 'history' ? COLORS.primary : COLORS.textSecondary}
+            />
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === 'history' && styles.activeTabText
+              ]}
+            >
+              Historique
             </Text>
           </TouchableOpacity>
         </View>
@@ -177,7 +198,7 @@ export default function ProfileScreen() {
               ))}
             </View>
           </View>
-        ) : (
+        ) : activeTab === 'achievements' ? (
           <View style={styles.achievementsContainer}>
             {user?.achievements?.map((achievement, index) => (
               <AchievementCard
@@ -190,6 +211,10 @@ export default function ProfileScreen() {
                 icon={achievement.icon}
               />
             ))}
+          </View>
+        ) : (
+          <View style={styles.historyContainer}>
+            <RecentGames mode="vertical" />
           </View>
         )}
 
@@ -211,7 +236,7 @@ export default function ProfileScreen() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            PokéGuessWho • v1.0.0
+           PokéGuessWho par Dhaky • v1.0.0
           </Text>
         </View>
       </ScrollView>
@@ -433,5 +458,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     fontSize: 12,
     color: COLORS.textTertiary,
+  },
+  historyContainer: {
+    marginBottom: 24,
   },
 });

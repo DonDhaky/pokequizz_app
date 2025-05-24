@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Trophy, Share2, Chrome as Home, Play, Info } from 'lucide-react-native';
+import { Trophy, Share2, Home, Play, Annoyed } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
 import { Pokemon } from '@/utils/types';
 
@@ -95,7 +95,7 @@ export default function GameResults({
             {isSuccess ? (
               <Trophy size={32} color={COLORS.white} />
             ) : (
-              <Info size={32} color={COLORS.white} />
+              <Annoyed size={32} color={COLORS.white} />
             )}
           </View>
           <Text style={styles.resultTitle}>
@@ -110,9 +110,8 @@ export default function GameResults({
         </View>
         
         <View style={styles.scoreContainer}>
-          <Text style={styles.scoreLabel}>Ton score</Text>
-          <Text style={styles.scoreValue}>{score}</Text>
-          <Text style={styles.scorePoints}>points</Text>
+          <Text style={styles.scoreLabel}>Score :</Text>
+          <Text style={styles.scoreValue}>{score} points</Text>
         </View>
         
         {pokemon && (
@@ -142,7 +141,7 @@ export default function GameResults({
             style={styles.shareButton}
             onPress={handleShare}
           >
-            <Share2 size={20} color={COLORS.white} />
+            <Share2 size={16} color={COLORS.white} />
             <Text style={styles.buttonText}>Partager</Text>
           </TouchableOpacity>
           
@@ -150,7 +149,7 @@ export default function GameResults({
             style={styles.playAgainButton}
             onPress={onPlayAgain}
           >
-            <Play size={20} color={COLORS.white} />
+            <Play size={16} color={COLORS.white} />
             <Text style={styles.buttonText}>Rejouer</Text>
           </TouchableOpacity>
           
@@ -158,7 +157,7 @@ export default function GameResults({
             style={styles.homeButton}
             onPress={() => router.push('/(tabs)')}
           >
-            <Home size={20} color={isSuccess ? COLORS.primary : COLORS.secondary} />
+            <Home size={16} color={isSuccess ? COLORS.primary : COLORS.secondary} />
             <Text style={[styles.buttonText, styles.homeButtonText]}>
               Accueil
             </Text>
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 8,
   },
   resultTitle: {
     fontFamily: 'Poppins-Bold',
@@ -284,7 +283,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     borderRadius: 25,
     flex: 1,
     marginRight: 8,
@@ -295,7 +294,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     borderRadius: 25,
     flex: 1,
     marginRight: 8,
@@ -306,17 +305,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     borderRadius: 25,
     flex: 1,
   },
   buttonText: {
     fontFamily: 'Inter-Bold',
-    fontSize: 14,
+    fontSize: 13,
     color: COLORS.white,
     marginLeft: 8,
   },
   homeButtonText: {
     color: COLORS.textPrimary,
+    fontSize: 13,
   },
 });

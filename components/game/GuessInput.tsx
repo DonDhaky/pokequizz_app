@@ -28,13 +28,13 @@ export default function GuessInput({
   const shakeAnim = useRef(new Animated.Value(0)).current;
   const correctAnim = useRef(new Animated.Value(0)).current;
   
-  useEffect(() => {
-    if (Platform.OS !== 'web') {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 500);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (Platform.OS !== 'web') {
+  //     setTimeout(() => {
+  //       inputRef.current?.focus();
+  //     }, 500);
+  //   }
+  // }, []);
   
   useEffect(() => {
     if (isCorrect) {
