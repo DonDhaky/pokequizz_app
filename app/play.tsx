@@ -169,7 +169,7 @@ export default function PlayScreen() {
           onPress: () => {
             setGameState('failure');
             setTimeout(() => {
-              router.back();
+              router.push('/');
             }, 300);
           }
         }

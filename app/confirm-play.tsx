@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { COLORS } from '@/utils/theme';
 import { ArrowLeft } from 'lucide-react-native';
+import { MotiView } from 'moti';
 
 export default function ConfirmPlayScreen() {
   const router = useRouter();
@@ -36,12 +37,26 @@ export default function ConfirmPlayScreen() {
         </TouchableOpacity>
         <Text style={styles.title}>Prêt à relever le défi ?</Text>
         <Text style={styles.subtitle}>Tu vas avoir 60 secondes pour deviner le Pokémon mystère. Bonne chance !</Text>
+        <MotiView
+            from={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: 'spring',
+              duration: 400,
+              scale: { type: 'spring', duration: 700, bounce: 0.5 },
+            }}
+            style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}
+          >
         <TouchableOpacity
           style={styles.startButton}
           onPress={() => router.replace({ pathname: '/play', params: { mode } })}
+          activeOpacity={0.8}
         >
-          <Text style={styles.startButtonText}>C'est parti !</Text>
+          
+            <Text style={styles.startButtonText}>C'est parti !</Text>
         </TouchableOpacity>
+        </MotiView>
+
       </Animated.View>
     </SafeAreaView>
   );
