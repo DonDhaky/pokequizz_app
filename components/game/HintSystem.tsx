@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import { Lightbulb } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
 import { Hint } from '@/utils/types';
+import { HINT_TYPE_FR } from '@/utils/mapping';
 
 interface HintSystemProps {
   hints: Hint[];
@@ -60,7 +61,7 @@ export default function HintSystem({
                 isRevealed && styles.revealedText,
                 !canAfford && !isRevealed && styles.unaffordableText
               ]}>
-                {hint.type}
+                {HINT_TYPE_FR[hint.type]}
               </Text>
               
               {isRevealed ? (
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   },
   hintsContainer: {
     paddingRight: 16,
+    marginBottom: 8,
   },
   hintCard: {
     width: 150,

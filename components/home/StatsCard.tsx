@@ -9,6 +9,7 @@ import {
   Calendar 
 } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
+import { TYPE_FR, STAT_FR, DIFFICULTY_FR } from '@/utils/mapping';
 
 type IconName = 'zap' | 'percent' | 'clock' | 'trophy' | 'flame' | 'calendar';
 

@@ -1,5 +1,6 @@
 import { GameState, Hint, Pokemon } from '@/utils/types';
 import { fetchRandomPokemon, fetchPokemon, fetchDailyPokemon } from './api';
+import { TYPE_FR, STAT_FR, DIFFICULTY_FR } from '@/utils/mapping';
 
 // Generate hints for a Pokémon
 const generateHints = (pokemon: Pokemon): Hint[] => {
@@ -69,22 +70,7 @@ const getLowestStat = (stats: Record<string, number>): string => {
 
 // Format stat name for display
 const formatStatName = (stat: string): string => {
-  switch (stat) {
-    case 'hp':
-      return 'HP';
-    case 'attack':
-      return 'Attack';
-    case 'defense':
-      return 'Defense';
-    case 'specialAttack':
-      return 'Special Attack';
-    case 'specialDefense':
-      return 'Special Defense';
-    case 'speed':
-      return 'Speed';
-    default:
-      return stat;
-  }
+  return STAT_FR[stat.toLowerCase()] || stat;
 };
 
 // Start a new game

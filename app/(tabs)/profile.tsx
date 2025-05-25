@@ -19,6 +19,7 @@ import StatisticsCard from '@/components/profile/StatisticsCard';
 import { fetchUserProfile } from '@/services/api';
 import { UserProfile } from '@/utils/types';
 import RecentGames from '@/components/home/RecentGames';
+import { TYPE_FR, STAT_FR, DIFFICULTY_FR } from '@/utils/mapping';
 
 export default function ProfileScreen() {
   const { user, setUser, logout } = useUserStore();
@@ -191,7 +192,7 @@ export default function ProfileScreen() {
                     <Text style={styles.typeIconText}>{type.type.charAt(0)}</Text>
                   </LinearGradient>
                   <View style={styles.typeInfo}>
-                    <Text style={styles.typeName}>{type.type}</Text>
+                    <Text style={styles.typeName}>{TYPE_FR[type.type.toLowerCase()] || type.type}</Text>
                     <Text style={styles.typeAccuracy}>{type.accuracy}% de précision</Text>
                   </View>
                 </View>

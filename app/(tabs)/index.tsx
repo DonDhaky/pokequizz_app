@@ -73,7 +73,7 @@ export default function HomeScreen() {
             </Text>
             <TouchableOpacity 
               style={styles.playButton}
-              onPress={() => router.push('/(tabs)/play')}
+              onPress={() => router.push('/confirm-play')}
             >
               <Play size={20} color={COLORS.primary} />
               <Text style={styles.playButtonText}>Jouer</Text>

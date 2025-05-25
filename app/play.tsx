@@ -9,11 +9,12 @@ import {
   TextInput,
   ScrollView,
   Animated,
-  Platform
+  Platform,
+  Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowLeft, CircleHelp as HelpCircle, Lightbulb, Clock, Heart, Search } from 'lucide-react-native';
 import { COLORS } from '@/utils/theme';
@@ -24,6 +25,7 @@ import GuessInput from '@/components/game/GuessInput';
 import GameResults from '@/components/game/GameResults';
 import { startGame, checkGuess } from '@/services/gameLogic';
 import { getDifficultySettings } from '@/utils/helpers';
+import { DIFFICULTY_FR } from '@/utils/mapping';
 
 export default function PlayScreen() {
   const { mode } = useLocalSearchParams();
@@ -46,9 +48,11 @@ export default function PlayScreen() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [remainingTime, setRemainingTime] = useState(60);
+  const [showStartScreen, setShowStartScreen] = useState(true);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const silhouetteOpacity = useRef(new Animated.Value(1)).current;
+  const router = useRouter();
 
   useEffect(() => {
     const gameMode = mode === 'daily' ? 'daily' : 'regular';
@@ -153,6 +157,26 @@ export default function PlayScreen() {
     });
   };
 
+  const handleBackPress = () => {
+    Alert.alert(
+      'Quitter la partie',
+      'Es-tu sûr de vouloir quitter ? La partie sera perdue.',
+      [
+        { text: 'Annuler', style: 'cancel' },
+        {
+          text: 'Quitter',
+          style: 'destructive',
+          onPress: () => {
+            setGameState('failure');
+            setTimeout(() => {
+              router.back();
+            }, 300);
+          }
+        }
+      ]
+    );
+  };
+
   if (showResults) {
     return (
       <GameResults 
@@ -169,7 +193,7 @@ export default function PlayScreen() {
       <StatusBar style="auto" />
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
             <ArrowLeft size={24} color={COLORS.textPrimary} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>
@@ -182,7 +206,7 @@ export default function PlayScreen() {
         
         <View style={styles.gameInfo}>
           <View style={styles.difficultyBadge}>
-            <Text style={styles.difficultyText}>{difficulty}</Text>
+            <Text style={styles.difficultyText}>{DIFFICULTY_FR[difficulty] || difficulty}</Text>
           </View>
           
           <View style={styles.statsContainer}>
