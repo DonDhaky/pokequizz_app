@@ -16,13 +16,15 @@ interface GuessInputProps {
   onChangeText: (text: string) => void;
   onSubmit: () => void;
   isCorrect: boolean;
+  showError?: boolean;
 }
 
 export default function GuessInput({ 
   value, 
   onChangeText, 
   onSubmit,
-  isCorrect
+  isCorrect,
+  showError = false
 }: GuessInputProps) {
   const inputRef = useRef<TextInput>(null);
   const shakeAnim = useRef(new Animated.Value(0)).current;
@@ -82,7 +84,11 @@ export default function GuessInput({
   };
 
   return (
-    <Animated.View style={[styles.container, inputContainerStyle]}>
+    <Animated.View style={[
+      styles.container,
+      inputContainerStyle,
+      showError && { borderColor: COLORS.error, backgroundColor: COLORS.error + '11' }
+    ]}>
       {isCorrect ? (
         <Check size={20} color={COLORS.success} style={styles.icon} />
       ) : (

@@ -26,6 +26,7 @@ import { fetchDailyPokemon } from '@/services/api';
 import { PokemonOfTheDay } from '@/utils/types';
 import RecentGames from '@/components/home/RecentGames';
 import StatsCard from '@/components/home/StatsCard';
+import { MotiView } from 'moti';
 
 const { width } = Dimensions.get('window');
 
@@ -66,7 +67,15 @@ export default function HomeScreen() {
           end={{ x: 1, y: 0 }} 
           style={styles.heroCard}
         >
-          <View style={styles.heroContent}>
+          <MotiView
+            from={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: 'spring',
+              duration: 400,
+            }}
+            style={styles.heroContent}
+          >
             <Text style={styles.heroTitle}>Prêt à jouer ?</Text>
             <Text style={styles.heroSubtitle}>
               Teste tes connaissances sur les Pokémon !
@@ -78,7 +87,7 @@ export default function HomeScreen() {
               <Play size={20} color={COLORS.primary} />
               <Text style={styles.playButtonText}>Jouer</Text>
             </TouchableOpacity>
-          </View>
+          </MotiView>
           <Image 
             source={{ uri: 'https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg' }} 
             style={styles.heroImage} 
@@ -97,7 +106,7 @@ export default function HomeScreen() {
           
           <TouchableOpacity 
             style={styles.dailyCard}
-            onPress={() => router.push('/(tabs)/play?mode=daily')}
+            onPress={() => router.push('/confirm-play')}
           >
             {isLoading ? (
               <View style={styles.loadingContainer}>
@@ -106,22 +115,32 @@ export default function HomeScreen() {
             ) : (
               <>
                 <View style={styles.dailyContent}>
-                  <Text style={styles.dailyTitle}>Pokémon du jour</Text>
-                  <Text style={styles.dailySubtitle}>
-                    Nouveau défi toutes les 24 heures
-                  </Text>
-                  <View style={styles.dailyStats}>
-                    <Text style={styles.dailyStatsText}>
-                      Difficulté : <Text style={styles.dailyHighlight}>Moyenne</Text>
+                  <MotiView
+                    from={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      type: 'spring',
+                      duration: 400,
+                    }}
+                    style={{ alignItems: 'flex-start', width: '100%' }}
+                  >
+                    <Text style={styles.dailyTitle}>Pokémon du jour</Text>
+                    <Text style={styles.dailySubtitle}>
+                      Nouveau défi toutes les 24 heures
                     </Text>
-                    <Text style={styles.dailyStatsText}>
-                      Points bonus : <Text style={styles.dailyHighlight}>2x</Text>
-                    </Text>
-                  </View>
-                  <TouchableOpacity style={styles.dailyButton}>
-                    <Text style={styles.dailyButtonText}>Tenter le défi</Text>
-                    <ChevronRight size={16} color={COLORS.white} />
-                  </TouchableOpacity>
+                    <View style={styles.dailyStats}>
+                      <Text style={styles.dailyStatsText}>
+                        Difficulté : <Text style={styles.dailyHighlight}>Maximale</Text>
+                      </Text>
+                      <Text style={styles.dailyStatsText}>
+                        Points bonus : <Text style={styles.dailyBonus}>2x</Text>
+                      </Text>
+                    </View>
+                    <TouchableOpacity style={styles.dailyButton}>
+                      <Text style={styles.dailyButtonText}>Tenter le défi</Text>
+                      <ChevronRight size={16} color={COLORS.white} />
+                    </TouchableOpacity>
+                  </MotiView>
                 </View>
                 <View style={styles.silhouetteContainer}>
                   {dailyPokemon && (
@@ -291,7 +310,11 @@ const styles = StyleSheet.create({
   },
   dailyHighlight: {
     fontFamily: 'Inter-Bold',
-    color: COLORS.accent,
+    color: COLORS.error,
+  },
+  dailyBonus: {
+    fontFamily: 'Inter-Bold',
+    color: COLORS.success,
   },
   dailyButton: {
     backgroundColor: COLORS.primary,

@@ -26,6 +26,7 @@ import GameResults from '@/components/game/GameResults';
 import { startGame, checkGuess } from '@/services/gameLogic';
 import { getDifficultySettings } from '@/utils/helpers';
 import { DIFFICULTY_FR } from '@/utils/mapping';
+import { MotiView } from 'moti';
 
 export default function PlayScreen() {
   const { mode } = useLocalSearchParams();
@@ -49,6 +50,9 @@ export default function PlayScreen() {
   const [showResults, setShowResults] = useState(false);
   const [remainingTime, setRemainingTime] = useState(60);
   const [showStartScreen, setShowStartScreen] = useState(true);
+  const [shakeInput, setShakeInput] = useState(false);
+  const [showErrorColor, setShowErrorColor] = useState(false);
+  const [errorCount, setErrorCount] = useState(0);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const silhouetteOpacity = useRef(new Animated.Value(1)).current;
@@ -115,6 +119,13 @@ export default function PlayScreen() {
     } else {
       setGuess('');
       updateLives(lives - 1);
+      setShakeInput(true);
+      setShowErrorColor(true);
+      setErrorCount((c) => c + 1);
+      setTimeout(() => {
+        setShakeInput(false);
+        setShowErrorColor(false);
+      }, 500);
       
       if (lives <= 1) {
         setGameState('failure');
@@ -269,6 +280,7 @@ export default function PlayScreen() {
             onChangeText={setGuess}
             onSubmit={handleGuess}
             isCorrect={isCorrect}
+            showError={showErrorColor}
           />
           
           <GameControls 

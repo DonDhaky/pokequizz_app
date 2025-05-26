@@ -96,15 +96,6 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="game-history"
-        options={{
-          title: 'Historique',
-          tabBarIcon: ({ color, size }) => (
-            <History size={size} color={color} />
-          ),
-        }}
-      />
     </Tabs>
   );
 }
